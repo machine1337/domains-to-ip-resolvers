@@ -25,7 +25,12 @@ Q: What should my domains.txt looks like?
 
      testphp.vulnweb.com
      evil.com
-
+     
+# Cureent Features:
+ 1. Subdomains Enumeration.
+ 2. Resolving domains to ip's.
+ 3. Run advanced level NMAP nse scan.
+ 
 # Special Thanks To:
   @tomnomnom.
   @projectdiscovery
