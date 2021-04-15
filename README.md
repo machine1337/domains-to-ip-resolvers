@@ -1,4 +1,4 @@
-# dom-to-ip
+# domains-to-ip
 
 # About:
 The purpose of this script is to collect  all the subdomains and then filter out those subodmains which are alive and then resolves them into IP. 
