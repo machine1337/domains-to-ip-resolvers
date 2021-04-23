@@ -28,6 +28,18 @@ if [[ $? -ne 0 ]]; then
 }
 assetfinder_checking
 sleep 2
+echo -e "\n\e[00;32m#################### Installing Seclists tool ###########################\e[00m"
+command -v "seclists" >/dev/null 2>&1
+if [[ ! -d /usr/share/seclists ]]; then
+        sudo apt update
+        sudo apt install seclists
+        echo "....................Seclists Successfully Installed................."
+        
+        else
+        echo ".................Seclists Already Exists................."
+fi
+      
+sleep 2
 echo -e "\n\e[00;32m#################### Installing amass tool ###########################\e[00m"
 amass_checking(){
 
