@@ -3,6 +3,7 @@
 # About:
 The purpose of this script is to collect  all the subdomains and then filter out those subodmains which are alive and then resolves them into IP. 
 Finally will run an advanced level NMAP NSE scan on those IP's.
+#nmap_scan #bugbounty
 
 # Prerequisite:
 Make sure go language is installed and setup on correct path.
