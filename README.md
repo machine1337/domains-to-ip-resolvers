@@ -1,6 +1,7 @@
 # domains-to-ip
 
-#Output:
+# Output:
+
    ![ip](https://user-images.githubusercontent.com/82051128/116421868-a98b5000-a858-11eb-8224-c0395218073c.png)
 
 # Prerequisite:
