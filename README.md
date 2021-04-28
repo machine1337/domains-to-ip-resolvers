@@ -1,5 +1,8 @@
 # domains-to-ip
 
+#Output:
+   ![ip](https://user-images.githubusercontent.com/82051128/116421868-a98b5000-a858-11eb-8224-c0395218073c.png)
+
 # Prerequisite:
     Make sure go language is installed and setup on correct path.
     if not installed, check my bug-bounty-automation repo, i have already given commands there.
