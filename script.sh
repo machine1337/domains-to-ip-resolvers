@@ -93,7 +93,7 @@ menu(){
 clear
 nmap_scan
 echo -e "\n[*] Which Type of Scan u want to Perform\n "
-echo -e "[1] Single domain Scan\n[2] List of domains\n[3] Full domain scan with subdomains"
+echo -e "[1] Single domain Scan\n[2] List of domains\n[3] Full domain scan with subdomains\n"
 echo -n "[+] Select: "
         read js_play
                 if [ $js_play -eq 1 ]; then
