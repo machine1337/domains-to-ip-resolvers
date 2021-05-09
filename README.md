@@ -14,11 +14,7 @@
     3. chmod +x script.sh
 
 # Usage:
-    cat domains.txt | ./script.sh
-
-    or
-
-    ./script.sh domains.txt
+    ./script.sh
 
 # Note:
 Q: What should my domains.txt looks like?
