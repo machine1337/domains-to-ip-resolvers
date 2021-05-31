@@ -2,7 +2,7 @@
 
 # Output:
 
-   ![ip](https://user-images.githubusercontent.com/82051128/116421868-a98b5000-a858-11eb-8224-c0395218073c.png)
+   ![dom](https://user-images.githubusercontent.com/82051128/120200620-f8ece380-c23d-11eb-9a6f-f71913675574.png)
 
 # Prerequisite:
     Make sure go language is installed and setup on correct path.
