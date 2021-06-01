@@ -5,7 +5,7 @@
 
 # Prerequisite:
     Make sure go language is installed and setup on correct path.
-    if not installed, check my bug-bounty-automation repo, i have already given commands there.
+    if not installed, check my recon-automation repo, i have already given commands there.
 
 # Installation:
     1. git clone https://github.com/machine1337/dom-to-ip  .
@@ -29,4 +29,5 @@ Q: What should my domains.txt looks like?
 # Special Thanks To:
     @tomnomnom
     @ProjectDiscovery
-  
+# Author:
+     https://facebook.com/unknownclay/
