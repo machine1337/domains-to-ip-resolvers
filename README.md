@@ -1,6 +1,5 @@
 # domains-to-ip
 
-# Output:
 
    ![dom](https://user-images.githubusercontent.com/82051128/120200620-f8ece380-c23d-11eb-9a6f-f71913675574.png)
 
