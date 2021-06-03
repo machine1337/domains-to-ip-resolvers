@@ -1,4 +1,19 @@
 #!/bin/bash
+NC='\033[0m'
+RED='\033[1;38;5;196m'
+GREEN='\033[1;38;5;040m'
+ORANGE='\033[1;38;5;202m'
+BLUE='\033[1;38;5;012m'
+BLUE2='\033[1;38;5;032m'
+PINK='\033[1;38;5;013m'
+GRAY='\033[1;38;5;004m'
+NEW='\033[1;38;5;154m'
+YELLOW='\033[1;38;5;214m'
+CG='\033[1;38;5;087m'
+CP='\033[1;38;5;221m'
+CPO='\033[1;38;5;205m'
+CN='\033[1;38;5;247m'
+CNC='\033[1;38;5;051m'
 echo -e "\n\e[00;33m#########################################################\e[00m"
 echo -e "\e[00;32m#                                                       #\e[00m" 
 echo -e "\e[00;31m#\e[00m" "\e[01;32m          DOMAINS TO IP'S RESOLVERS & NMAP NSE SCAN \e[00m" "\e[00;31m#\e[00m"
@@ -12,35 +27,44 @@ echo -e "\n\e[00;35m#########################################################\e[
 d=$(date +"%b-%d-%y %H:%M")
 sleep 2
 echo -e "\n\e[00;35m#################### Installtion Started On: $d ###########################\e[00m"
-sleep 2
-echo -e "\n\e[00;31m#################### Installing assetfinder tool ###########################\e[00m"
 sleep 1
+echo -e ${BLUE}"[+]\nChecking Go Installation"
+
+if [[ -z "$GOPATH" ]]; then
+  echo "............It Looks Like Go is Not Installed.............."
+  exit 1
+  else
+  echo ".............Go is already installed.............."
+ fi
+echo -e ${GREEN}"[+]\nInstalling Assetfinder"
+sleep 1
+
 assetfinder_checking(){
 command -v "assetfinder" >/dev/null 2>&1
-if [[ $? -ne 0 ]]; then
+if [[ $? -ne 0 ]]; then 
         echo "Installing assetfinder: "
-        go get -u github.com/tomnomnom/assetfinder
+        go get -u github.com/tomnomnom/assetfinder >/dev/null 2>&1
         echo ".............assetfinder successfully installed.............."
         else
-        echo "assetfinder already installed"
+        echo ".......assetfinder already installed.........."
     fi
 
 }
 assetfinder_checking
-sleep 2
-echo -e "\n\e[00;32m#################### Installing Seclists tool ###########################\e[00m"
+sleep 1
+echo -e ${RED}"[+]\nInstalling Seclists"
 command -v "seclists" >/dev/null 2>&1
-if [[ ! -d /usr/share/seclists ]]; then
+if [[ ! -d /usr/share/seclists ]]; then 
         sudo apt update
-        sudo apt install seclists
+        sudo apt install seclists >/dev/null 2>&1
         echo "....................Seclists Successfully Installed................."
         
         else
         echo ".................Seclists Already Exists................."
 fi
       
-sleep 2
-echo -e "\n\e[00;32m#################### Installing amass tool ###########################\e[00m"
+sleep 1
+echo -e ${PINK}"[+]\nInstalling Amass"
 amass_checking(){
 
 command -v "amass" >/dev/null 2>&1
@@ -50,12 +74,12 @@ if [[ $? -ne 0 ]]; then
          sudo apt-get install amass
          echo "................Amass successfully installed.............."
          else
-         echo "Amass is already installed"
+         echo "..........Amass is already installed.........."
    fi
 }
 amass_checking
-sleep 2
-echo -e "\n\e[00;33m#################### Installing jq tool ###########################\e[00m"
+sleep 1
+echo -e ${GRAY}"[+]\nInstalling jq"
 jq_checking(){
 
 command -v "jq" >/dev/null 2>&1
@@ -65,14 +89,14 @@ if [[ $? -ne 0 ]]; then
          sudo apt-get install jq
          echo ".................jq successfully installed.............."
          else
-         echo "jq is already installed"
+         echo "...........jq is already installed.............."
    fi
 
 }
 jq_checking
 
-sleep 2
-echo -e "\n\e[00;34m#################### Installing subfinder tool ###########################\e[00m"
+sleep 1
+echo -e ${ORANGE}"[+]\nInstalling Subfinder"
 subfinder_checking(){
 command -v "subfinder" >/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
@@ -80,13 +104,13 @@ if [[ $? -ne 0 ]]; then
          GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
          echo "................subfinder successfully installed.............."
          else
-         echo "subfinder is already installed"
+         echo "...........subfinder is already installed............."
    fi
 
 }
 subfinder_checking
-sleep 2
-echo -e "\n\e[00;35m#################### Installing Massdns tool ###########################\e[00m"
+sleep 1
+echo -e ${YELLOW}"[+]\nInstalling massdns"
 massdns_checking(){
 mkdir -p ~/tools
 command -v "massdns" >/dev/null 2>&1
@@ -100,13 +124,13 @@ if [[ $? -ne 0 ]]; then
           sudo mv massdns /usr/local/bin
           echo "............massdns installed successfully............"
          else
-         echo "massdns is already installed"
+         echo "..........massdns is already installed............"
     fi
 
 }
 massdns_checking
-sleep 2
-echo -e "\n\e[00;35m#################### Installing dnsvalidator tool ###########################\e[00m"
+sleep 1
+echo -e ${CNC}"[+]\nInstalling dnsvalidator"
 dnsvalidator_installing(){
 mkdir -p ~/tools
 mkdir -p ~/tools/resolvers
@@ -127,33 +151,33 @@ fi
 
 }
 dnsvalidator_installing
-sleep 2
+sleep 1
 
 other_tools(){
-echo -e "\n\e[00;36m#################### Installing httpx tool ###########################\e[00m"
+echo -e ${CPO}"[+]\nInstalling httpx"
 command -v "httpx" >/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
          echo "Installing httpx.....\n\n:"
         go get -v github.com/projectdiscovery/httpx/cmd/httpx
         echo ".................httpx successfully installed.............."
          else
-         echo "httpx is already installed"
+         echo "...............httpx is already installed............."
    fi
 
-sleep 2
-echo -e "\n\e[00;37m#################### Installing httprobe tool ###########################\e[00m"
+sleep 1
+echo -e ${CP}"[+]\nInstalling httprobe"
 command -v "httprobe" >/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
          echo "Installing httprobe.....\n\n:"
          go get -u github.com/tomnomnom/httprobe
          echo ".............httprobe successfully installed.............."
          else
-         echo "httprobe is already installed"
+         echo "...........httprobe is already installed..............."
    fi
 }
 other_tools
-sleep 2
-echo -e "\n\e[00;32m#################### Installing nmap scripting ###########################\e[00m"
+sleep 1
+echo -e ${CG}"[+]\nInstalling NMAP NSE scripts"
 nmap_script(){
      if [ -f /usr/share/nmap/scripts/vulners.nse ]; then
            
@@ -164,8 +188,8 @@ nmap_script(){
          echo "...............Scripts successfully installed.................."
          
     fi
-sleep 2
-echo -e "\n\e[00;32m#################### Installing vulnscan tool ###########################\e[00m"
+sleep 1
+echo -e ${CP}"[+] Installing vulnscan For NMAP"
     if [ -d /usr/share/nmap/scripts/vulscan ]; then
                echo "....................vulnscan already exists...................."
         else
