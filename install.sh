@@ -14,29 +14,26 @@ CP='\033[1;38;5;221m'
 CPO='\033[1;38;5;205m'
 CN='\033[1;38;5;247m'
 CNC='\033[1;38;5;051m'
-echo -e "\n\e[00;33m#########################################################\e[00m"
-echo -e "\e[00;32m#                                                       #\e[00m" 
-echo -e "\e[00;31m#\e[00m" "\e[01;32m          DOMAINS TO IP'S RESOLVERS & NMAP NSE SCAN \e[00m" "\e[00;31m#\e[00m"
-echo -e "\e[00;34m#                                                       #\e[00m" 
-echo -e "\e[00;35m#########################################################\e[00m"
-echo -e ""
-echo -e "\e[00;36m##### https://www.facebook.com/unknownclay/ #####\e[00m"
-echo -e "\e[00;37m#####       Coded By: Machine404            #####\e[00m"
-
-echo -e "\n\e[00;35m#########################################################\e[00m"
+echo -e ${RED}    "###############################################################"
+echo -e ${ORANGE} " #     DOMAIN'S TO IP RESOLVERS & NMAP NSE SCRIPT SCAN         #  "
+echo -e ${PINK}   " #                                                             #  "
+echo -e ${BLUE}   " #              https://facebook.com/unknownclay               #  "
+echo -e ${YELLOW} " #             Coded By: Machine404                            #  "
+echo -e ${CP}     " #             https://github.com/machine1337                  #  "
+echo -e ${RED}    "################################################################ \n "
 d=$(date +"%b-%d-%y %H:%M")
-sleep 2
-echo -e "\n\e[00;35m#################### Installtion Started On: $d ###########################\e[00m"
 sleep 1
-echo -e ${BLUE}"[+]\nChecking Go Installation"
+echo -e ${CP}"[+]Installtion Started On: $d \n"
+sleep 1
+echo -e ${BLUE}"[+]Checking Go Installation\n"
 
 if [[ -z "$GOPATH" ]]; then
-  echo "............It Looks Like Go is Not Installed.............."
+  echo -e ${RED}"Go is not Installed....Plz Install it and run the script again"
   exit 1
   else
-  echo ".............Go is already installed.............."
+  echo -e ${BLUE}"..........Go is installed.............."
  fi
-echo -e ${GREEN}"[+]\nInstalling Assetfinder"
+echo -e ${GREEN}"[+]Installing Assetfinder\n"
 sleep 1
 
 assetfinder_checking(){
@@ -52,7 +49,7 @@ if [[ $? -ne 0 ]]; then
 }
 assetfinder_checking
 sleep 1
-echo -e ${RED}"[+]\nInstalling Seclists"
+echo -e ${RED}"[+]Installing Seclists\n"
 command -v "seclists" >/dev/null 2>&1
 if [[ ! -d /usr/share/seclists ]]; then 
         sudo apt update
@@ -64,7 +61,7 @@ if [[ ! -d /usr/share/seclists ]]; then
 fi
       
 sleep 1
-echo -e ${PINK}"[+]\nInstalling Amass"
+echo -e ${PINK}"[+]Installing Amass\n"
 amass_checking(){
 
 command -v "amass" >/dev/null 2>&1
@@ -79,7 +76,7 @@ if [[ $? -ne 0 ]]; then
 }
 amass_checking
 sleep 1
-echo -e ${GRAY}"[+]\nInstalling jq"
+echo -e ${GRAY}"[+]\nInstalling jq\n"
 jq_checking(){
 
 command -v "jq" >/dev/null 2>&1
@@ -96,7 +93,7 @@ if [[ $? -ne 0 ]]; then
 jq_checking
 
 sleep 1
-echo -e ${ORANGE}"[+]\nInstalling Subfinder"
+echo -e ${ORANGE}"[+]\nInstalling Subfinder\n"
 subfinder_checking(){
 command -v "subfinder" >/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
@@ -110,7 +107,7 @@ if [[ $? -ne 0 ]]; then
 }
 subfinder_checking
 sleep 1
-echo -e ${YELLOW}"[+]\nInstalling massdns"
+echo -e ${YELLOW}"[+]\nInstalling massdns\n"
 massdns_checking(){
 mkdir -p ~/tools
 command -v "massdns" >/dev/null 2>&1
@@ -130,7 +127,7 @@ if [[ $? -ne 0 ]]; then
 }
 massdns_checking
 sleep 1
-echo -e ${CNC}"[+]\nInstalling dnsvalidator"
+echo -e ${CNC}"[+]\nInstalling dnsvalidator\n"
 dnsvalidator_installing(){
 mkdir -p ~/tools
 mkdir -p ~/tools/resolvers
@@ -154,7 +151,7 @@ dnsvalidator_installing
 sleep 1
 
 other_tools(){
-echo -e ${CPO}"[+]\nInstalling httpx"
+echo -e ${CPO}"[+]Installing httpx\n"
 command -v "httpx" >/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
          echo "Installing httpx.....\n\n:"
@@ -165,7 +162,7 @@ if [[ $? -ne 0 ]]; then
    fi
 
 sleep 1
-echo -e ${CP}"[+]\nInstalling httprobe"
+echo -e ${CP}"[+]Installing httprobe\n"
 command -v "httprobe" >/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
          echo "Installing httprobe.....\n\n:"
@@ -177,7 +174,7 @@ if [[ $? -ne 0 ]]; then
 }
 other_tools
 sleep 1
-echo -e ${CG}"[+]\nInstalling NMAP NSE scripts"
+echo -e ${CG}"[+]Installing NMAP NSE scripts\n"
 nmap_script(){
      if [ -f /usr/share/nmap/scripts/vulners.nse ]; then
            
@@ -189,7 +186,7 @@ nmap_script(){
          
     fi
 sleep 1
-echo -e ${CP}"[+] Installing vulnscan For NMAP"
+echo -e ${CP}"[+] Installing vulnscan For NMAP\n"
     if [ -d /usr/share/nmap/scripts/vulscan ]; then
                echo "....................vulnscan already exists...................."
         else
