@@ -16,67 +16,67 @@ CN='\033[1;38;5;247m'
 CNC='\033[1;38;5;051m'
 
 function nmap_scan(){
-echo -e ${CPO}"#########################################################"                                                  
-echo -e ${RED}"#      Domains To IP Resolvers & NMAP NSE SCAN          #"
-echo -e ${BLUE}"#        A FrameWork For Advanced NMAP SCAN             #"
-echo -e ${CG}"#          https://facebook.com/unknownclay             #"
-echo -e ${CP}"#          Coded By:  Machine1337	                #"
-echo -e ${CP}"#          https://github.com/machine1337               #  "
-echo -e ${CPO}"########################################################"
+echo -e ${RED}    "###############################################################"
+echo -e ${ORANGE} " #     DOMAIN'S TO IP RESOLVERS & NMAP NSE SCRIPT SCAN         #  "
+echo -e ${PINK}   " #                                                             #  "
+echo -e ${BLUE}   " #              https://facebook.com/unknownclay               #  "
+echo -e ${YELLOW} " #             Coded By: Machine404                            #  "
+echo -e ${CP}     " #             https://github.com/machine1337                  #  "
+echo -e ${RED}    "################################################################ \n "
 
 }
 d=$(date +"%b-%d-%y %H:%M")
 function scan_single(){
 clear
 nmap_scan
-echo -n -e ${RED}"\n[+] Enter Single domain : " 
+echo -n -e ${RED}"\n[+] Enter Single domain (https://target.com) : " 
            read domain
 mkdir -p $domain $domain/masscan $domain/nmap
 echo "$domain" > $domain/domain.txt
-echo -e "\n\e[00;31m##################Resolving Domain to IP ###########################\e[00m"
+echo -e ${BLUE}"\n[+] Resolving domain to IP:- \n"
 massdns -r ~/tools/resolvers/resolver.txt -t A -o S -w $domain/masscan/results.txt $domain/domain.txt
 cat $domain/masscan/results.txt | sed '/\/ /g' | awk '{print $3}' | tee $domain/masscan/ip.txt
-echo -e "\n\e[00;37m##################Starting NMAP NSE Scan ###########################\e[00m"
+echo -e ${GREEN}"\n[+] NMAP NSE Scan Started On Domain:- "
 nmap -sV  --script vulners.nse -iL $domain/masscan/ip.txt  -oN $domain/nmap/scan.txt
 }
 function scan_all(){
 clear
 nmap_scan
-echo -e -n ${ORANGE}"\n[+] Enter domain name : "
+echo -e -n ${ORANGE}"\n[+] Enter domain name (e.g target.com) : "
 read domain
 mkdir -p $domain $domain/domain_enum $domain/final_domains  $domain/nmap  $domain/masscan 
 
-echo -e "\n\e[00;33m#################### Domain Enumeration Started On: $d ####################\e[00m"
+echo -e ${BLUE}"\n[+] Finding Subdomains.....:- \n"
 sleep 1
-echo -e "\n\e[00;36m#################### crt.sh Enumeration Started ###########################\e[00m"
+echo -e ${CP}"\n[+] Crt.sh Started:- "
 curl -s https://crt.sh/\?q\=%25.$domain\&output\=json | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u | tee $domain/domain_enum/crt.txt
-echo -e "\n\e[00;32m#################### subfinder Enumeration Started ###########################\e[00m"
+echo -e ${PINK}"\n[+] Subfinder  Started:- "
 subfinder -d $domain -o $domain/domain_enum/subfinder.txt
 
-echo -e "\n\e[00;33m#################### assetfinder Enumeration Started ###########################\e[00m"
+echo -e ${YELLOW}"[+] Assetfinder Started:- "
 assetfinder -subs-only $domain | tee $domain/domain_enum/assetfinder.txt
 
-echo -e "\n\e[00;34m#################### Amass Enumeration Started ###########################\e[00m"
+echo -e ${GREEN}"\n[+] Amass Started:- "
 amass enum -passive -d $domain -o $domain/domain_enum/amass.txt
 
-echo -e "\n\e[00;35m#################### shuffledns  Started ###########################\e[00m"
+echo -e ${BLUE}"\n[+] Shuffledns Started:- "
 
 shuffledns -d $domain -w /usr/share/seclists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -r ~/tools/resolvers/resolver.txt -o $domain/domain_enum/shuffledns.txt
-echo -e "\n\e[00;36m##################Collecting all subdomains into one file #######################\e[00m"
+echo -e ${CPO}"\n[+] Collecting All Subdomains Into Single File:- "
 cat $domain/domain_enum/*.txt > $domain/domain_enum/all.txt
 
-echo -e "\n\e[00;37m##################Resolving All Subdomains ###########################\e[00m"
+echo -e ${RED}"\n[+] Resolving All Subdomains:- "
 
 shuffledns -d $domain -list $domain/domain_enum/all.txt -o $domain/domains.txt -r ~/tools/resolvers/resolver.txt
 
-echo -e "\n\e[00;30m##################Checking Services on subdomains ###########################\e[00m"
+echo -e ${BLUE}"\n[+]Checking Services on Domains:- "
 cat $domain/domains.txt | httpx -threads 30 -o $domain/final_domains/httpx.txt
 
-echo -e "\n\e[00;31m##################Resolving Domains to IP ###########################\e[00m"
+echo -e ${CP}"[+] Resolving Domains to IP'S:- "
 massdns -r ~/tools/resolvers/resolver.txt -t A -o S -w $domain/masscan/results.txt $domain/domains.txt
 cat $domain/masscan/results.txt | sed '/\/ /g' | awk '{print $3}' | tee $domain/masscan/ip.txt
 
-echo -e "\n\e[00;37m##################Starting NMAP NSE Scan ###########################\e[00m"
+echo -e ${GREEN}"\n[+] Started NMAP NSE Scan:- "
 
 nmap -sV  --script vulners.nse -iL $domain/masscan/ip.txt -oN $domain/nmap/scan.txt
 
@@ -86,17 +86,17 @@ nmap -sV  --script vulners.nse -iL $domain/masscan/ip.txt -oN $domain/nmap/scan.
 function scan_list(){
 clear
 nmap_scan
-echo -n -e ${BLUE2}"\n[+] Enter path of  domains list: "
+echo -n -e ${BLUE2}"\n[+] Enter path of  domains list (e.g https://target.com): "
 read host
 for domain in $(cat $host);
 do
 mkdir -p $domain $domain/masscan $domain/nmap
 echo "$domain" > $domain/domain.txt
-echo -e "\n\e[00;31m##################Resolving Domains to IP ###########################\e[00m"
+echo -e ${BLUE}"[+] Resolving Domains to IP:- "
 massdns -r ~/tools/resolvers/resolver.txt -t A -o S -w $domain/masscan/results.txt $domain/domain.txt
 cat $domain/masscan/results.txt | sed '/\/ /g' | awk '{print $3}' | tee $domain/masscan/ip.txt
 
-echo -e "\n\e[00;37m##################Starting NMAP NSE Scan ###########################\e[00m"
+echo -e ${GREEN}"\n[+] NMAP NSE SCAN Started:- "
 
 nmap -sV  --script vulners.nse -iL $domain/masscan/ip.txt  -oN $domain/nmap/scan.txt
 
