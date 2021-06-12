@@ -1,7 +1,7 @@
 # domains-to-ip
 
+![dom](https://user-images.githubusercontent.com/82051128/121773983-f9b83a80-cb98-11eb-9780-6b4019c1cc69.png)
 
-   ![dom](https://user-images.githubusercontent.com/82051128/120200620-f8ece380-c23d-11eb-9a6f-f71913675574.png)
 
 # Prerequisite:
     Make sure go language is installed and setup on correct path.
