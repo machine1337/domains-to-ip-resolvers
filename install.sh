@@ -196,4 +196,4 @@ echo -e ${CP}"[+] Installing vulnscan For NMAP\n"
     fi
 }
 nmap_script
-echo -e ${BLUE}"[+] Installation Done "
+echo -e ${BLUE}"[+] Installation Done :) "
