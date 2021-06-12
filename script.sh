@@ -16,11 +16,13 @@ CN='\033[1;38;5;247m'
 CNC='\033[1;38;5;051m'
 
 function nmap_scan(){
-echo -e ${CNC}"#######################################################"                                                    
-echo -e ${RED} "      Domains To IP Resolvers & NMAP NSE SCAN        #"
-echo -e ${CG}"        https://facebook.com/unknownclay              #"
-echo -e ${CP}"        Coded By:  Machine1337	                      #"
-echo -e ${CPO}"#######################################################"
+echo -e ${CPO}"#########################################################"                                                  
+echo -e ${RED}"#      Domains To IP Resolvers & NMAP NSE SCAN          #"
+echo -e ${BLUE}"#        A FrameWork For Advanced NMAP SCAN             #"
+echo -e ${CG}"#          https://facebook.com/unknownclay             #"
+echo -e ${CP}"#          Coded By:  Machine1337	                #"
+echo -e ${CP}"#          https://github.com/machine1337               #  "
+echo -e ${CPO}"########################################################"
 
 }
 d=$(date +"%b-%d-%y %H:%M")
