@@ -29,5 +29,4 @@ Q: What should my domains.txt looks like?
 # Special Thanks To:
     @tomnomnom
     @ProjectDiscovery
-# Author:
-     https://facebook.com/unknownclay/
+
